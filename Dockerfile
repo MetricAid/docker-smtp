@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Oluwaseun Obajobi "oluwaseun.obajobi@namshi.com"
+MAINTAINER Dean Karn "Dean.Karn@metricaid.com"
 
 RUN apt-get update && \
     apt-get install -y exim4-daemon-light && \
