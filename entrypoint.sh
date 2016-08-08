@@ -62,10 +62,6 @@ else
 	)
 fi
 
-opts+=(
-	dc_smtp_accept_max '0'
-)
-
 /bin/set-exim4-update-conf "${opts[@]}"
 
 exec "$@"
