@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+echo "*: ${HOST_IP}" > /etc/mailips
 echo "smtp_accept_max = 0" > /etc/exim4/exim4.conf.localmacros
 
 if [ "$MAILNAME" ]; then
@@ -21,7 +22,7 @@ if [ "$KEY_PATH" -a "$CERTIFICATE_PATH" ]; then
 fi
 
 opts=(
-	dc_local_interfaces "[${HOST_IP:-0.0.0.0}]:${PORT:-25} ; [::0]:${PORT:-25}"
+	dc_local_interfaces "[0.0.0.0]:${PORT:-25} ; [::0]:${PORT:-25}"
 	dc_other_hostnames ''
 	dc_relay_nets "$(ip addr show dev eth0 | awk '$1 == "inet" { print $2 }')${RELAY_NETWORKS}"
 )
